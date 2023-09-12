@@ -100,5 +100,20 @@ public class IntQueueTest {
         }
     }
 
-
+    @Test
+    public void testContentMoveHead() {
+        Integer len = 100;
+        for (Integer i = 0; i < len / 5; i++) {
+            mQueue.enqueue(i);
+        }
+        for (Integer i = 0; i < len / 10; i++) {
+            mQueue.dequeue();
+        }
+        for (Integer i = len / 5; i < len; i++) {
+            mQueue.enqueue(i);
+        }
+        for (Integer i = len / 10; i < len; i++) {
+            assertEquals(mQueue.dequeue(), i);
+        }
+    }
 }
