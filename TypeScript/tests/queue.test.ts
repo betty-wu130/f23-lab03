@@ -1,3 +1,4 @@
+import { create } from "domain";
 import { newArrayIntQueue } from "../src/arrayqueue";
 import { newLinkedListIntQueue } from "../src/linkedlistqueue.js";
 
@@ -52,4 +53,39 @@ describe("test size: ", ()=> {
             queue.enqueue(i)
         expect(queue.size()).toBe(11)
     })
+})
+
+describe("test dequeue: ", ()=> {
+    test("empty queue", ()=> {
+        const queue = createQueue()
+        expect(queue.dequeue()).toBeNull()
+    })
+    test("1 entry", ()=> {
+        const queue = createQueue();
+        queue.enqueue(10)
+        expect(queue.dequeue()).toBe(10)
+    })
+})
+
+test("the size of queue should be 0 after clear being called", ()=> {
+    const queue = createQueue()
+    queue.enqueue(1)
+    expect(queue.size()).toBe(1)
+    queue.clear();
+    expect(queue.size()).toBe(0)
+})
+
+test("ensureCapacity function should copy the old array to the correct position", ()=> {
+    const queue = createQueue()
+    for(let i = 0; i < 10; i++) {
+        queue.enqueue(i)
+    }
+    queue.dequeue()
+    queue.dequeue()
+    for(let i = 10; i < 20; i++) {
+        queue.enqueue(i)
+    }
+    for(let i = 2; i < 20; i++) {
+        expect(queue.dequeue()).toBe(i)
+    }
 })

@@ -61,7 +61,7 @@ function newArrayIntQueue (): IntQueue {
         newData[i - head] = elementData[i]
       }
       for (let i = 0; i < head; i++) {
-        newData[head - i] = elementData[i]
+        newData[oldCapacity - head + i] = elementData[i]
       }
       elementData = newData
       head = 0
@@ -94,11 +94,12 @@ function newArrayIntQueue (): IntQueue {
     },
 
     isEmpty: function (): boolean {
-      return size >= 0
+      return size == 0
     },
 
     peek: function (): number | null {
-      return elementData[head]
+      if (size === 0) return null
+      return elementData[(head + size - 1) % elementData.length]
     },
 
     size: function (): number {
