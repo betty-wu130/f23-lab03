@@ -101,7 +101,7 @@ public class IntQueueTest {
     }
 
     @Test
-    public void testContentMoveHead() {
+    public void testEnsureCapacity() {
         Integer len = 100;
         for (Integer i = 0; i < len / 5; i++) {
             mQueue.enqueue(i);
@@ -115,5 +115,18 @@ public class IntQueueTest {
         for (Integer i = len / 10; i < len; i++) {
             assertEquals(mQueue.dequeue(), i);
         }
+    }
+
+    @Test
+    public void testClear() {
+        testList.forEach(n -> mQueue.enqueue(n));
+        assertEquals(mQueue.size(), testList.size());
+        mQueue.clear();
+        assertEquals(mQueue.size(), 0);
+    }
+
+    @Test
+    public void testDequeueEmpty() {
+        assertNull(mQueue.dequeue());
     }
 }

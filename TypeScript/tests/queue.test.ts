@@ -2,8 +2,8 @@ import { newArrayIntQueue } from "../src/arrayqueue";
 import { newLinkedListIntQueue } from "../src/linkedlistqueue.js";
 
 // pick one queue implementation, can run test easily for both, due to subtype polymorphism
-let createQueue = newLinkedListIntQueue
-// let createQueue = newArrayIntQueue
+// let createQueue = newLinkedListIntQueue
+let createQueue = newArrayIntQueue
 
 // TODOs:
 // write more test cases to test dequeue and clear functions.
