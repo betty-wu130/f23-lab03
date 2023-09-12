@@ -25,7 +25,7 @@ interface IntQueue {
   /**
      * Add the element to the tail of the queue.
      *
-     * @param value	The element to place at the tail of the queue.
+     * @param value The element to place at the tail of the queue.
      * @return      Whether the element was enqueued successfully.
      */
   enqueue: (value: number) => boolean
